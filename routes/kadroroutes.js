@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const kadroController = require('../controller/kadrocontroller');
 
-// Takım ID'si 1 olan tüm kadro bilgilerini getir
+// Başakşehirli oyuncuların kadro bilgileri
 router.get('/', kadroController.getKadroByTakimId);
 
-// Belirli bir oyuncuyu güncelle
+// Güncelleme Butonu
 router.put('/:id', kadroController.updateOyuncu);
 
-// Belirli bir oyuncuyu sil
+//  Silme Butonu
 router.delete('/:id', kadroController.deleteOyuncu);
 
 module.exports = router;
