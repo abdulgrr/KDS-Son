@@ -1,6 +1,6 @@
 const Oyuncu = require('../model/oyuncu');
 
-// Takım ID'si 1 olan tüm kadro bilgilerini getir
+// Başakşehirli oyuncuların tüm kadro bilgilerini getirme
 exports.getKadroByTakimId = async (req, res) => {
   try {
     const oyuncular = await Oyuncu.findAll({
@@ -12,7 +12,7 @@ exports.getKadroByTakimId = async (req, res) => {
   }
 };
 
-// Belirli bir oyuncuyu güncelle
+// Kadro ekranında oyuncuyu güncelleme butonu
 exports.updateOyuncu = async (req, res) => {
   try {
     const [updated] = await Oyuncu.update(req.body, {
@@ -29,7 +29,7 @@ exports.updateOyuncu = async (req, res) => {
   }
 };
 
-// Belirli bir oyuncuyu sil
+// Oyuncu Silme Butonu
 exports.deleteOyuncu = async (req, res) => {
   try {
     const deleted = await Oyuncu.destroy({
