@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes kısmında / kısmına dikkat et
+// Routes kısmı
 app.use('/kadro', kadroRoutes);
 app.use('/', sakatCezaliRoutes);
 app.use('/', transferRoutes);
