@@ -1,6 +1,8 @@
-const Oyuncu = require('../model/oyuncu'); // Corrected import
+const Oyuncu = require('../model/oyuncu'); 
 const sequelize = require('sequelize');
 
+
+//Genel Puan karşılaştırması için veri çekme
 exports.getGenelPuanComparison = async (req, res) => {
     try {
         const takim1Players = await Oyuncu.findAll({
