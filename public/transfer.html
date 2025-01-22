@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Transfer - İBFK Yönetim Paneli</title>
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <style>
+         .form-control {
+            color: white;
+        }
+        .form-control::placeholder {
+            color: white;
+        }
+        .form-control:focus {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-scroller">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item nav-category"><span class="nav-link">Navigation</span></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="index.html"><span class="menu-icon"><i class="mdi mdi-speedometer"></i></span><span class="menu-title">Ana Sayfa</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="kadro.html"><span class="menu-icon"><i class="mdi mdi-account-group"></i></span><span class="menu-title">Kadro</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="transfer.html"><span class="menu-icon"><i class="mdi mdi-worker"></i></span><span class="menu-title">Transfer</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="sakatcezali.html"><span class="menu-icon"><i class="mdi mdi-script"></i></span><span class="menu-title">Sakat ve Cezalılar</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="tavsiye.html"><span class="menu-icon"><i class="mdi mdi-cash-multiple"></i></span><span class="menu-title">Önerilen Eylemler</span></a></li>
+            </ul>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                   
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas"><span class="mdi mdi-format-line-spacing"></span></button>
+                </div>
+            </nav>
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Oyuncu Filtrele</h4>
+                                    <form id="filterForm">
+                                        <div class="form-group">
+                                            <label for="minGenelPuan">Minimum Genel Puan</label>
+                                            <input type="number" class="form-control" id="minGenelPuan">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxGenelPuan">Maksimum Genel Puan</label>
+                                            <input type="number" class="form-control" id="maxGenelPuan">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minYas">Minimum Yaş</label>
+                                            <input type="number" class="form-control" id="minYas">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxYas">Maksimum Yaş</label>
+                                            <input type="number" class="form-control" id="maxYas">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minHiz">Minimum Hız</label>
+                                            <input type="number" class="form-control" id="minHiz">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minPas">Minimum Şut</label>
+                                            <input type="number" class="form-control" id="minSut">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minPas">Minimum Pas</label>
+                                            <input type="number" class="form-control" id="minPas">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minDef">Minimum Defans</label>
+                                            <input type="number" class="form-control" id="minDef">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minDribl">Minimum Top Kontrolü</label>
+                                            <input type="number" class="form-control" id="minDribl">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="minFiz">Minimum Fizik</label>
+                                            <input type="number" class="form-control" id="minFiz">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxTransferDeg">Maksimum Transfer Değeri</label>
+                                            <input type="number" class="form-control" id="maxTransferDeg">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Filtrele</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Oyuncular</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="playersTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Oyuncu Adı</th>
+                                                    <th>Genel Puan</th>
+                                                    <th>Yaş</th>
+                                                    <th>Pozisyon</th>
+                                                    <th>Şut</th>
+                                                    <th>Hız</th>
+                                                    <th>Pas</th>
+                                                    <th>Def</th>
+                                                    <th>Dribl</th>
+                                                    <th>Fiz</th>
+                                                    <th>Transfer Değeri</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Filtrelenmiş oyuncular burada dinamik olarak yüklenecek -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script>
+        document.getElementById('filterForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = {
+                minGenelPuan: document.getElementById('minGenelPuan').value,
+                maxGenelPuan: document.getElementById('maxGenelPuan').value,
+                minYas: document.getElementById('minYas').value,
+                maxYas: document.getElementById('maxYas').value,
+                minHiz: document.getElementById('minHiz').value,
+                minSut: document.getElementById('minSut').value,
+                minPas: document.getElementById('minPas').value,
+                minDef: document.getElementById('minDef').value,
+                minDribl: document.getElementById('minDribl').value,
+                minFiz: document.getElementById('minFiz').value,
+                maxTransferDeg: document.getElementById('maxTransferDeg').value,
+            };
+
+            const response = await fetch('/transfer/filter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            const players = await response.json();
+            const tbody = document.querySelector('#playersTable tbody');
+            tbody.innerHTML = '';
+            players.forEach(player => {
+                const row = `<tr>
+                    <td>${player.AdSoyad}</td>
+                    <td>${player.GenelPuan}</td>
+                    <td>${player.Yas}</td>
+                    <td>${player.Poz}</td>
+                    <td>${player.Sut}</td>
+                    <td>${player.Hiz}</td>
+                    <td>${player.Pas}</td>
+                    <td>${player.Def}</td>
+                    <td>${player.Dribl}</td>
+                    <td>${player.Fiz}</td>
+                    <td>${player.TransferDeg}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        });
+    </script>
+</body>
+</html>

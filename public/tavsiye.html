@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Önerilen Eylemler - İBFK Yönetim Paneli</title>
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-header {
+            background-color: #745701;
+            color: #fff;
+            font-weight: bold;
+        }
+        .card-body {
+            background-color: #1a1a2e;
+            color: #fff;
+        }
+        .list-group-item:hover {
+            background-color: #f1f1f1;
+            color: #000;
+        }
+        .spinner-border {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-scroller">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item nav-category"><span class="nav-link">Navigation</span></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="index.html"><span class="menu-icon"><i class="mdi mdi-speedometer"></i></span><span class="menu-title">Ana Sayfa</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="kadro.html"><span class="menu-icon"><i class="mdi mdi-account-group"></i></span><span class="menu-title">Kadro</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="transfer.html"><span class="menu-icon"><i class="mdi mdi-worker"></i></span><span class="menu-title">Transfer</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="sakatcezali.html"><span class="menu-icon"><i class="mdi mdi-script"></i></span><span class="menu-title">Sakat ve Cezalılar</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="tavsiye.html"><span class="menu-icon"><i class="mdi mdi-cash-multiple"></i></span><span class="menu-title">Önerilen Eylemler</span></a></li>
+            </ul>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                    
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas"><span class="mdi mdi-format-line-spacing"></span></button>
+                </div>
+            </nav>
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Tavsiyeler</h4>
+                                    <div class="spinner-border text-primary" role="status" id="loadingSpinner">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <i class="mdi mdi-account-alert"></i> Sözleşmesi Sezon Sonunda Biten Oyuncular
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5>Bu oyuncuların sözleşmesi sezon sonunda bitecektir. Sözleşme görüşmelerini acilen başlatmanız tavsiye edilir:</h5>
+                                                    <ul id="contractEnd2025List" class="list-group"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <i class="mdi mdi-account-clock"></i> Sözleşmesi Önümüzdeki Sezon Biten Oyuncular
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5>Bu oyuncuların sözleşmesi önümüzdeki sezon bitecek. Transfer listesine ekleyip bu oyunculardan para kazanabiliyorken para kazanmanız mantıklı olabilir:</h5>
+                                                    <ul id="contractEnd2026List" class="list-group"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <i class="mdi mdi-cash"></i> Bütçesi Düşük Takımlar
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5>Bu takımların bütçesi 1 milyondan daha düşük. Muhtemelen paraya ihtiyaçları var ve oyuncu satmaya yanaşabilirler. Oyuncularını gözlemlemek için Scout'ları görevlendirmeyi düşünebilirsin:</h5>
+                                                    <ul id="lowBudgetTeamsList" class="list-group"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <i class="mdi mdi-account-remove"></i> Düşük Genel Puanlı Yabancı Oyuncular
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5>Türkiyede yabancı sınırı var. yer açmak istiyosan bu oyuncuları satmayı ya da kiralamayı düşünebilirsin:</h5>
+                                                    <ul id="lowRatingForeignPlayersList" class="list-group"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <i class="mdi mdi-alert"></i> Pozisyon Eksiklikleri
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5>Bu pozisyonlardaki oyuncu sayısı az. Herhangi bir sakatlık durumunda sıkıntı yaşanabilir:</h5>
+                                                    <ul id="leastPlayersPositionsList" class="list-group"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        async function loadAdviceLists() {
+            try {
+                document.getElementById('loadingSpinner').style.display = 'block';
+                const response = await fetch('/tavsiyeler');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+
+                const contractEnd2025List = document.getElementById('contractEnd2025List');
+                data.playersContractEnd2025.forEach(player => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = player.AdSoyad;
+                    contractEnd2025List.appendChild(li);
+                });
+
+                const contractEnd2026List = document.getElementById('contractEnd2026List');
+                data.playersContractEnd2026.forEach(player => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = player.AdSoyad;
+                    contractEnd2026List.appendChild(li);
+                });
+
+                const lowBudgetTeamsList = document.getElementById('lowBudgetTeamsList');
+                data.lowBudgetTeams.forEach(team => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = team.isim;
+                    lowBudgetTeamsList.appendChild(li);
+                });
+
+                const lowRatingForeignPlayersList = document.getElementById('lowRatingForeignPlayersList');
+                data.lowRatingForeignPlayers.forEach(player => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = player.AdSoyad;
+                    lowRatingForeignPlayersList.appendChild(li);
+                });
+
+                const leastPlayersPositionsList = document.getElementById('leastPlayersPositionsList');
+        const positions = ['RB', 'CDM']; // Pozisyonlar
+
+        positions.forEach(position => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.textContent = position;
+            leastPlayersPositionsList.appendChild(li);
+        });
+
+                
+
+                document.getElementById('loadingSpinner').style.display = 'none';
+            } catch (error) {
+                console.error('Error fetching advice lists:', error);
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAdviceLists);
+    </script>
+</body>
+</html>

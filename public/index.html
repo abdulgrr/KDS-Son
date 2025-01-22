@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Başakşehir FK - Anasayfa</title>
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #f4f5f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+        }
+        .info-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .info-box {
+            background-color: rgb(7, 52, 147);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 22%;
+            margin: 10px;
+        }
+        .info-box h4 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+            color: #ffe175;
+        }
+        .info-box p {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .left-column, .right-column {
+            width: 48%;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 350px;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: rgb(108, 164, 255);
+            margin-bottom: 20px;
+        }
+        .chart-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .table-container {
+            margin: 20px auto;
+            background-color: rgb(4, 11, 146);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .table-container h4 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .bottom-charts {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-scroller">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item nav-category"><span class="nav-link">Navigation</span></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="index.html"><span class="menu-icon"><i class="mdi mdi-speedometer"></i></span><span class="menu-title">Ana Sayfa</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="kadro.html"><span class="menu-icon"><i class="mdi mdi-account-group"></i></span><span class="menu-title">Kadro</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="transfer.html"><span class="menu-icon"><i class="mdi mdi-worker"></i></span><span class="menu-title">Transfer</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="sakatcezali.html"><span class="menu-icon"><i class="mdi mdi-script"></i></span><span class="menu-title">Sakat ve Cezalılar</span></a></li>
+                <li class="nav-item menu-items"><a class="nav-link" href="tavsiye.html"><span class="menu-icon"><i class="mdi mdi-cash-multiple"></i></span><span class="menu-title">Önerilen Eylemler</span></a></li>
+            </ul>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                    
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas"><span class="mdi mdi-format-line-spacing"></span></button>
+                </div>
+            </nav>
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="header">
+                        <h1>Başakşehir Futbol Kulübü</h1>
+                        <p>Dashboard</p>
+                    </div>
+                    <div class="info-boxes">
+                        <div class="info-box">
+                            <h4>Transfer Listesindeki Oyuncu Sayısı</h4>
+                            <p>2</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Kiralık Giden Oyuncu Sayısı</h4>
+                            <p>4</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Transfer Bütçesi</h4>
+                            <p>7.000.000</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>As Kadrodaki Oyuncu Sayısı</h4>
+                            <p>25</p>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="left-column">
+                            <div class="chart-container">
+                                <div class="chart-title">Genel Puan Karşılaştırması</div>
+                                <canvas id="genelPuanChart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <div class="chart-title">Kadro Dağılımı</div>
+                                <canvas id="kadroDagilimiChart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <div class="chart-title">Hız Değeri Karşılaştırması</div>
+                                <canvas id="hizChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="right-column">
+                            <div class="table-container">
+                                <h4>Lig Sıralaması</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sıra</th>
+                                            <th>Takım</th>
+                                            <th>Puan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>1</td><td>Samsunspor</td><td>59</td></tr>
+                                        <tr><td>2</td><td>Fenerbahçe</td><td>58</td></tr>
+                                        <tr><td>3</td><td><b><em><i>Başakşehir</i></em></b></td><td>49</td></tr>
+                                        <tr><td>4</td><td>Beşiktaş</td><td>47</td></tr>
+                                        <tr><td>5</td><td>Galatasaray</td><td>45</td></tr>
+                                        <tr><td>6</td><td>Eyüpspor</td><td>41</td></tr>
+                                        <tr><td>7</td><td>Trabzonspor</td><td>39</td></tr>
+                                        <tr><td>8</td><td>Kasımpaşa</td><td>35</td></tr>
+                                        <tr><td>9</td><td>Göztepe</td><td>35</td></tr>
+                                        <tr><td>10</td><td>Antalyaspor</td><td>30</td></tr>
+                                        <tr><td>11</td><td>Alanyaspor</td><td>27</td></tr>
+                                        <tr><td>12</td><td>Sivasspor</td><td>26</td></tr>
+                                        <tr><td>13</td><td>Kayserispor</td><td>24</td></tr>
+                                        <tr><td>14</td><td>Konyaspor</td><td>20</td></tr>
+                                        <tr><td>15</td><td>Gaziantep</td><td>19</td></tr>
+                                        <tr><td>16</td><td>Hatayspor</td><td>15</td></tr>
+                                        <tr><td>17</td><td>Bodrum FK</td><td>14</td></tr>
+                                        <tr><td>18</td><td>Çaykur Rizespor</td><td>12</td></tr>
+                                        <tr><td>19</td><td>Adana Demirspor</td><td>5</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-charts">
+                        <div class="chart-container">
+                            <div class="chart-title">Şut Değeri Karşılaştırması</div>
+                            <canvas id="sutChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Pas Değeri Karşılaştırması</div>
+                            <canvas id="pasChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">Fizik Değeri Karşılaştırması</div>
+                            <canvas id="fizikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script>
+        async function fetchGenelPuanData() {
+            try {
+                const response = await fetch('/api/genelPuanComparison');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching Genel Puan data:', error);
+                return null;
+            }
+        }
+
+        async function renderGenelPuanChart() {
+            const data = await fetchGenelPuanData();
+            if (!data) {
+                console.error('No data available for chart');
+                return;
+            }
+            const ctx = document.getElementById('genelPuanChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Başakşehir', 'Lig Ortalaması'],
+                    datasets: [{
+                        label: 'Ortalama Genel Puan',
+                        data: [data.takim1Avg, data.otherTeamsAvg],
+                        backgroundColor: ['#007bff', '#ff7f0e'], // Blue and Orange
+                        borderColor: ['#007bff', '#ff7f0e'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderStaticChart(chartId, title, basaksehirValue, leagueAvgValue) {
+            const ctx = document.getElementById(chartId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Başakşehir', 'Lig Ortalaması'],
+                    datasets: [{
+                        label: title,
+                        data: [basaksehirValue, leagueAvgValue],
+                        backgroundColor: ['#007bff', '#ff7f0e'], // Blue and Orange
+                        borderColor: ['#007bff', '#ff7f0e'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderPieChart() {
+            const ctx = document.getElementById('kadroDagilimiChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Forvetler', 'Kanatlar', 'Orta Sahalar', 'Defanslar'],
+                    datasets: [{
+                        data: [3, 6, 5, 7],
+                        backgroundColor: ['#ff0000', '#ff7f0e', '#00ff00', '#007bff'], // Red, Orange, Green, Blue
+                        borderColor: ['#ff0000', '#ff7f0e', '#00ff00', '#007bff'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGenelPuanChart();
+            renderStaticChart('sutChart', 'Şut Değeri', 64.21, 62.65);
+            renderStaticChart('pasChart', 'Pas Değeri', 62.55, 58.00);
+            renderStaticChart('hizChart', 'Hız Değeri', 72.69, 68.79);
+            renderStaticChart('fizikChart', 'Fizik Değeri', 69.32, 65.05);
+            renderPieChart();
+        });
+    </script>
+</body>
+</html>

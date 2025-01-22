@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kadro - İBFK Direktör Yönetim Paneli</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- Sidebar -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/dost.png" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item nav-category"><span class="nav-link">Navigation</span></li>
+          <li class="nav-item menu-items"><a class="nav-link" href="index.html"><span class="menu-icon"><i class="mdi mdi-speedometer"></i></span><span class="menu-title">Ana Sayfa</span></a></li>
+          <li class="nav-item menu-items"><a class="nav-link" href="kadro.html"><span class="menu-icon"><i class="mdi mdi-account-group"></i></span><span class="menu-title">Kadro</span></a></li>
+          <li class="nav-item menu-items"><a class="nav-link" href="transfer.html"><span class="menu-icon"><i class="mdi mdi-worker"></i></span><span class="menu-title">Transfer</span></a></li>
+          <li class="nav-item menu-items"><a class="nav-link" href="sakatcezali.html"><span class="menu-icon"><i class="mdi mdi-script"></i></span><span class="menu-title">Sakat ve Cezalılar</span></a></li>
+          <li class="nav-item menu-items"><a class="nav-link" href="tavsiye.html"><span class="menu-icon"><i class="mdi mdi-cash-multiple"></i></span><span class="menu-title">Önerilen Eylemler</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="container-fluid page-body-wrapper">
+        <!-- Navbar -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas"><span class="mdi mdi-format-line-spacing"></span></button>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <!-- Table -->
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Kadro</h4>
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="kadroTable">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Oyuncu Adı</th>
+                            <th>Pozisyon</th>
+                            <th>Alternatif Pozisyon</th>
+                            <th>Ülke</th>
+                            <th>Yaş</th>
+                            <th>Genel Puan</th>
+                            <th>Hız</th>
+                            <th>Şut</th>
+                            <th>Pas</th>
+                            <th>Dribling</th>
+                            <th>Defans</th>
+                            <th>Fizik</th>
+                            <th>Transfer Değeri</th>
+                            <th>Sözleşme Bitiş Tarihi</th>
+                            <th>İşlemler</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Kadro burada dinamik olarak yüklenecek -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script>
+      async function fetchKadro() {
+        try {
+          const response = await fetch('/kadro');
+          const oyuncular = await response.json();
+          const tbody = document.querySelector('#kadroTable tbody');
+          tbody.innerHTML = '';
+          oyuncular.forEach(oyuncu => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${oyuncu.id}</td>
+              <td>${oyuncu.AdSoyad}</td>
+              <td>${oyuncu.Poz}</td>
+              <td>${oyuncu.AltPoz}</td>
+              <td>${oyuncu.Ulke}</td>
+              <td>${oyuncu.Yas}</td>
+              <td>${oyuncu.GenelPuan}</td>
+              <td>${oyuncu.Hiz}</td>
+              <td>${oyuncu.Sut}</td>
+              <td>${oyuncu.Pas}</td>
+              <td>${oyuncu.Dribl}</td>
+              <td>${oyuncu.Def}</td>
+              <td>${oyuncu.Fiz}</td>
+              <td>${oyuncu.TransferDeg}</td>
+              <td>${new Date(oyuncu.SozlesmeBit).toLocaleDateString()}</td>
+              <td>
+                <button class="btn btn-warning" onclick="updateOyuncu(${oyuncu.id})">Güncelle</button>
+                <button class="btn btn-danger" onclick="deleteOyuncu(${oyuncu.id})">Sil</button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        } catch (error) {
+          console.error('Kadro bilgilerini alırken hata oluştu:', error);
+        }
+      }
+
+      async function updateOyuncu(id) {
+        const AdSoyad = prompt('Yeni Oyuncu Adı:');
+        const Poz = prompt('Yeni Pozisyon:');
+        const AltPoz = prompt('Yeni Alternatif Pozisyon:');
+        const Ulke = prompt('Yeni Ülke:');
+        const Yas = prompt('Yeni Yaş:');
+        const GenelPuan = prompt('Yeni Genel Puan:');
+        const Hiz = prompt('Yeni Hız:');
+        const Sut = prompt('Yeni Şut:');
+        const Pas = prompt('Yeni Pas:');
+        const Dribl = prompt('Yeni Dribling:');
+        const Def = prompt('Yeni Defans:');
+        const Fiz = prompt('Yeni Fizik:');
+        const TransferDeg = prompt('Yeni Transfer Değeri:');
+        const SozlesmeBit = prompt('Yeni Sözleşme Bitiş Tarihi (YYYY-MM-DD):');
+
+        if (AdSoyad && Poz && AltPoz && Ulke && Yas && GenelPuan && Hiz && Sut && Pas && Dribl && Def && Fiz && TransferDeg && SozlesmeBit) {
+          try {
+            const response = await fetch(`/kadro/${id}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ AdSoyad, Poz, AltPoz, Ulke, Yas, GenelPuan, Hiz, Sut, Pas, Dribl, Def, Fiz, TransferDeg, SozlesmeBit })
+            });
+
+            if (response.ok) {
+              alert('Oyuncu güncellendi');
+              fetchKadro();
+            } else {
+              alert('Güncelleme başarısız');
+            }
+          } catch (error) {
+            console.error('Oyuncu güncellenirken hata oluştu:', error);
+          }
+        } else {
+          alert('Tüm alanları doldurmanız gerekmektedir!');
+        }
+      }
+
+      async function deleteOyuncu(id) {
+        if (confirm('Oyuncuyu silmek istediğinize emin misiniz?')) {
+          try {
+            const response = await fetch(`/kadro/${id}`, {
+              method: 'DELETE'
+            });
+
+            if (response.ok) {
+              alert('Oyuncu silindi');
+              fetchKadro();
+            } else {
+              alert('Silme işlemi başarısız');
+            }
+          } catch (error) {
+            console.error('Oyuncu silinirken hata oluştu:', error);
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', fetchKadro);
+    </script>
+  </body>
+</html>
