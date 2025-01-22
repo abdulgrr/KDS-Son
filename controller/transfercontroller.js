@@ -1,7 +1,7 @@
 const Oyuncu = require('../model/oyuncu');
 const { Op } = require('sequelize');
 
-// Filter players based on criteria
+// Oyuncuları girilen bilgilere göre filtreleme
 exports.filterPlayers = async (req, res) => {
     try {
         const { minGenelPuan, maxGenelPuan, minYas, maxYas, minHiz, minSut, minPas, minDef, minDribl, minFiz, maxTransferDeg } = req.body;
