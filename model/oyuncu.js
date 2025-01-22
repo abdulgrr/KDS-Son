@@ -2,13 +2,13 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../db/DBConfig'); // Veritabanı bağlantısı
 const Takim = require('./takim'); // Takim modelini içe aktar
 
-// Kadro modelini tanımla
+// Kadro modelini tanımlama
 const Oyuncu = sequelize.define("Oyuncu", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true, // Primary key ekledik
+        primaryKey: true, // Primary key olduğu belirtildi
     },
     AdSoyad: {
         type: DataTypes.STRING,
@@ -78,7 +78,7 @@ const Oyuncu = sequelize.define("Oyuncu", {
     timestamps: false // Zaman damgalarını devre dışı bırak
 });
 
-// İlişkiyi tanımla
+//  Takım Tablosuyla ilişki tanımlama
 Oyuncu.belongsTo(Takim, { foreignKey: 'takim_id' });
 Takim.hasMany(Oyuncu, { foreignKey: 'takim_id' });
 
