@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db/DBConfig'); // Veritabanı bağlantısını içe aktar
+const sequelize = require('../db/DBConfig'); // Veritabanı bağlantısı
 const Oyuncu = require('./oyuncu');
 
-// SakatCezali modelini tanımla
+// Moedli tanımlama
 const SakatCezali = sequelize.define("SakatCezali", {
     id: {
         type: DataTypes.INTEGER,
@@ -32,10 +32,10 @@ const SakatCezali = sequelize.define("SakatCezali", {
     }
 }, {
     tableName: 'sakatcezali', // Tablo adı
-    timestamps: false // Zaman damgalarını devre dışı bırak
+    timestamps: false // Zaman damgalarını devre dışı bıraktık
 });
 
-// İlişkiyi tanımla
+// oyuncu tablosuyla ilişki eklendi
 SakatCezali.belongsTo(Oyuncu, { foreignKey: 'oyuncu_id', as: 'Oyuncu' });
 Oyuncu.hasMany(SakatCezali, { foreignKey: 'oyuncu_id', as: 'SakatCezaliKayitlari' });
 
