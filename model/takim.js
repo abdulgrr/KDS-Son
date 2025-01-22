@@ -1,13 +1,13 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db/DBConfig'); // Veritabanı bağlantısı
 
-// Takim modelini tanımla
+//  modeli tanımlama
 const Takim = sequelize.define("Takim", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true, // Primary key ekledik
+        primaryKey: true, 
     },
     isim: {
         type: DataTypes.STRING,
@@ -23,7 +23,7 @@ const Takim = sequelize.define("Takim", {
     }
 }, {
     tableName: 'takim', // Tablo adı
-    timestamps: false // Zaman damgalarını devre dışı bırak
+    timestamps: false // Zaman damgalarını devre dışı bırakma
 });
 
 module.exports = Takim;
