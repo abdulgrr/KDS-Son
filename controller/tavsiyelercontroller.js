@@ -2,10 +2,10 @@ const Oyuncu = require('../model/oyuncu');
 const Takim = require('../model/takim');
 const { Op } = require('sequelize');
 
-// Get advice lists
+// Önerilen Eylemlerde Tablolara veri çekme
 exports.getAdviceLists = async (req, res) => {
     try {
-        // Players whose contract ends on 2025-06-30 and team ID is 1
+        // Sözleşmesi bitmek üzere olan Başakşehirli oyuncular
         const playersContractEnd2025 = await Oyuncu.findAll({
             where: {
                 SozlesmeBit: new Date('2025-06-30'),
@@ -15,7 +15,7 @@ exports.getAdviceLists = async (req, res) => {
             attributes: ['AdSoyad']
         });
 
-        // Players whose contract ends on 2026-06-30 and team ID is 1
+        // Sözleşmesi bir sonraki sezon sonu bitecek olan başakşehirli oyuncular.
         const playersContractEnd2026 = await Oyuncu.findAll({
             where: {
                 SozlesmeBit: new Date('2026-06-30'),
@@ -25,7 +25,7 @@ exports.getAdviceLists = async (req, res) => {
             attributes: ['AdSoyad']
         });
 
-        // Teams with a transfer budget less than 1,000,001
+        // Transfer Bütçesi Kısıtlı Takımlar
         const lowBudgetTeams = await Takim.findAll({
             where: {
                 butce: {
@@ -35,6 +35,7 @@ exports.getAdviceLists = async (req, res) => {
             attributes: ['isim']
         });
 
+        // Başakşehirde yabancı kontenjanındaki en düşük reytingli 3 oyuncu
         const lowRatingForeignPlayers = await Oyuncu.findAll({
             where: {
                 ulke: {
