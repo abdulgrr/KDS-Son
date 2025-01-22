@@ -1,7 +1,7 @@
 const SakatCezali = require('../model/sakatcezali');
 const Oyuncu = require('../model/oyuncu');
 
-// Create a new record
+// Form ile Veri Oluşturma
 exports.createSakatCezali = async (req, res) => {
     try {
         const sakatCezali = await SakatCezali.create(req.body);
@@ -12,7 +12,7 @@ exports.createSakatCezali = async (req, res) => {
     }
 };
 
-// Get all records
+//Tüm Verileri Veritabanından çekip tabloya koyma
 exports.getSakatCezali = async (req, res) => {
   try {
       const sakatCezaliList = await SakatCezali.findAll({
@@ -24,7 +24,7 @@ exports.getSakatCezali = async (req, res) => {
   }
 };
 
-// Update a record
+// Tablodaki Güncelleme Butonu
 exports.updateSakatCezali = async (req, res) => {
     try {
         const { id } = req.params;
@@ -40,7 +40,7 @@ exports.updateSakatCezali = async (req, res) => {
     }
 };
 
-// Delete a record
+// Tablodaki Silme Butonu
 exports.deleteSakatCezali = async (req, res) => {
     try {
         const { id } = req.params;
